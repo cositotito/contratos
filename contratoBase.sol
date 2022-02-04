@@ -45,14 +45,13 @@ contract base is Owner {
     }
 
     // agrega dato siempre y cuando no tenga datos el mapping
-    // [timestamcreation,dato0]
     // ej: [11231231232312,155]
     function appendData(uint index, uint[] memory dato0) public noDato(index) onlyOwner() { 
         allData[longitud+index]= typeData(block.timestamp,dato0[0],dato0[1]);       
     }
 
     // le paso una matriz para poder agregarlo dentro de la estructura    
-    // [dato, timestamcreation]
+    // [timestamcreation, dato]
     // [[11231231232312,155],[1,2],[23,43],[54,33],[23,2],[2,3]]
     // [[9112333311,155],[144444,2],[24333343,43],[5666664,33],[222223,2],[111112,3]]
     function forAppendData(uint[][] memory dato0) public onlyOwner()  {
